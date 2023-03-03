@@ -16,19 +16,22 @@
   <meta name="author" content="CynicCat">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="hexo使用手册">
-<meta property="og:url" content="http://example.com/2023/02/25/hexo-shi-yong-shou-ce/index.html">
+    <meta name="description" content="json前言在GitHub上找来练手的项目 在这里记录一下自己的路上遇到的难点和知识吧 01单元测试123456789101112#define EXPECT_EQ_BASE(equality, expect, actual, format) \    do &amp;#123;\        test_count++;\        if (equality)\            test_pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="json—C">
+<meta property="og:url" content="http://example.com/2023/02/26/json-c/index.html">
 <meta property="og:site_name" content="CynicCat">
+<meta property="og:description" content="json前言在GitHub上找来练手的项目 在这里记录一下自己的路上遇到的难点和知识吧 01单元测试123456789101112#define EXPECT_EQ_BASE(equality, expect, actual, format) \    do &amp;#123;\        test_count++;\        if (equality)\            test_pa">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-25T09:25:38.000Z">
-<meta property="article:modified_time" content="2023-02-25T09:25:38.052Z">
+<meta property="article:published_time" content="2023-02-26T14:40:23.000Z">
+<meta property="article:modified_time" content="2023-02-26T16:39:05.944Z">
 <meta property="article:author" content="CynicCat">
+<meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>hexo使用手册 - CynicCat</title>
+  <title>json—C - CynicCat</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo使用手册"></span>
+            <span id="subtitle" data-typed-text="json—C"></span>
           
         </div>
 
@@ -205,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-25 17:25" pubdate>
-          2023年2月25日 下午
+        <time datetime="2023-02-26 22:40" pubdate>
+          2023年2月26日 晚上
         </time>
       </span>
     
@@ -217,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          965 字
         
       </span>
     
@@ -228,7 +231,7 @@
         
         
         
-          1 分钟
+          9 分钟
         
       </span>
     
@@ -266,12 +269,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">hexo使用手册</h1>
+            <h1 style="display: none">json—C</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在GitHub上找来练手的项目</p>
+<p>在这里记录一下自己的路上遇到的难点和知识吧</p>
+<h2 id="01"><a href="#01" class="headerlink" title="01"></a>01</h2><h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">#define EXPECT_EQ_BASE(equality, <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>, format) \<br>    <span class="hljs-keyword">do</span> &#123;\<br>        test_count++;\<br>        <span class="hljs-keyword">if</span> (equality)\<br>            test_pass++;\<br>        <span class="hljs-keyword">else</span> &#123;\<br>            fprintf(stderr, <span class="hljs-string">&quot;%s:%d: expect: &quot;</span> format <span class="hljs-string">&quot; actual: &quot;</span> format <span class="hljs-string">&quot;\n&quot;</span>, __FILE__, __LINE__, <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>);\<br>            main_ret = <span class="hljs-number">1</span>;\<br>        &#125;\<br>    &#125; <span class="hljs-keyword">while</span>(<span class="hljs-number">0</span>)<br><br>#define EXPECT_EQ_INT(<span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>) EXPECT_EQ_BASE((<span class="hljs-keyword">expect</span>) == (<span class="hljs-keyword">actual</span>), <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>, <span class="hljs-string">&quot;%d&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>简单例子</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">static void test<span class="hljs-constructor">_parse_null()</span> &#123;<br>    lept_value v;<br>    v.<span class="hljs-keyword">type</span> = LEPT_FALSE;<br>    <span class="hljs-constructor">EXPECT_EQ_INT(LEPT_PARSE_OK, <span class="hljs-params">lept_parse</span>(&amp;<span class="hljs-params">v</span>, <span class="hljs-string">&quot;null&quot;</span>)</span>);<br>    <span class="hljs-constructor">EXPECT_EQ_INT(LEPT_NULL, <span class="hljs-params">lept_get_type</span>(&amp;<span class="hljs-params">v</span>)</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="02"><a href="#02" class="headerlink" title="02"></a>02</h2><h3 id="简化单元测试"><a href="#简化单元测试" class="headerlink" title="简化单元测试"></a>简化单元测试</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">#define <span class="hljs-constructor">TEST_ERROR(<span class="hljs-params">error</span>, <span class="hljs-params">json</span>)</span>\<br>    <span class="hljs-keyword">do</span> &#123;\<br>        lept_value v;\<br>        v.<span class="hljs-keyword">type</span> = LEPT_FALSE;\<br>        <span class="hljs-constructor">EXPECT_EQ_INT(<span class="hljs-params">error</span>, <span class="hljs-params">lept_parse</span>(&amp;<span class="hljs-params">v</span>, <span class="hljs-params">json</span>)</span>);\<br>        <span class="hljs-constructor">EXPECT_EQ_INT(LEPT_NULL, <span class="hljs-params">lept_get_type</span>(&amp;<span class="hljs-params">v</span>)</span>);\<br>    &#125; <span class="hljs-keyword">while</span>(<span class="hljs-number">0</span>)<br><br>static void test<span class="hljs-constructor">_parse_expect_value()</span> &#123;<br>    <span class="hljs-constructor">TEST_ERROR(LEPT_PARSE_EXPECT_VALUE, <span class="hljs-string">&quot;&quot;</span>)</span>;<br>    <span class="hljs-constructor">TEST_ERROR(LEPT_PARSE_EXPECT_VALUE, <span class="hljs-string">&quot; &quot;</span>)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
@@ -279,6 +293,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C/">#C</a>
+      
+    </div>
   
 </div>
 
@@ -288,8 +309,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo使用手册</div>
-      <div>http://example.com/2023/02/25/hexo-shi-yong-shou-ce/</div>
+      <div>json—C</div>
+      <div>http://example.com/2023/02/26/json-c/</div>
     </div>
     <div class="license-meta">
       
@@ -301,7 +322,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月25日</div>
+          <div>2023年2月26日</div>
         </div>
       
       
@@ -333,18 +354,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/26/json-c/" title="json—C">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">json—C</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/25/bo-yi-lun/" title="博弈论">
-                        <span class="hidden-mobile">博弈论</span>
+                      <a href="/2023/02/25/hexo-shi-yong-shou-ce/" title="hexo使用手册">
+                        <span class="hidden-mobile">hexo使用手册</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

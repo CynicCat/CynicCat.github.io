@@ -24,9 +24,9 @@
 <meta property="og:description" content="json前言在GitHub上找来练手的项目 在这里记录一下自己的路上遇到的难点和知识吧 01Cmake创建项目(windows)  将这个设立为 启动项 单元测试123456789101112#define EXPECT_EQ_BASE(equality, expect, actual, format) \    do &amp;#123;\        test_count++;\        if">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/03/03/shi-jue/image-20230309142607715.png">
-<meta property="og:image" content="http://example.com/2023/03/03/shi-jue/image-20230309143021107.png">
+<meta property="og:image" content="http://example.com/pic/json_c.png">
 <meta property="article:published_time" content="2023-02-26T14:40:23.000Z">
-<meta property="article:modified_time" content="2023-03-17T06:17:27.755Z">
+<meta property="article:modified_time" content="2023-03-17T06:21:56.035Z">
 <meta property="article:author" content="CynicCat">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,7 +280,7 @@
                 <h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在GitHub上找来练手的项目</p>
 <p>在这里记录一下自己的路上遇到的难点和知识吧</p>
 <h2 id="01"><a href="#01" class="headerlink" title="01"></a>01</h2><h3 id="Cmake创建项目-windows"><a href="#Cmake创建项目-windows" class="headerlink" title="Cmake创建项目(windows)"></a>Cmake创建项目(windows)</h3><p><img src="/2023/03/03/shi-jue/image-20230309142607715.png" srcset="/img/loading.gif" lazyload alt="image-20230309142607715"></p>
-<p><img src="/2023/03/03/shi-jue/image-20230309143021107.png" srcset="/img/loading.gif" lazyload alt="image-20230309143021107"></p>
+<p><img src="/../../pic/json_c.png" srcset="/img/loading.gif" lazyload alt="image-20230309143021107"></p>
 <p>将这个设立为 启动项</p>
 <h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">#define EXPECT_EQ_BASE(equality, <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>, format) \<br>    <span class="hljs-keyword">do</span> &#123;\<br>        test_count++;\<br>        <span class="hljs-keyword">if</span> (equality)\<br>            test_pass++;\<br>        <span class="hljs-keyword">else</span> &#123;\<br>            fprintf(stderr, <span class="hljs-string">&quot;%s:%d: expect: &quot;</span> format <span class="hljs-string">&quot; actual: &quot;</span> format <span class="hljs-string">&quot;\n&quot;</span>, __FILE__, __LINE__, <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>);\<br>            main_ret = <span class="hljs-number">1</span>;\<br>        &#125;\<br>    &#125; <span class="hljs-keyword">while</span>(<span class="hljs-number">0</span>)<br><br>#define EXPECT_EQ_INT(<span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>) EXPECT_EQ_BASE((<span class="hljs-keyword">expect</span>) == (<span class="hljs-keyword">actual</span>), <span class="hljs-keyword">expect</span>, <span class="hljs-keyword">actual</span>, <span class="hljs-string">&quot;%d&quot;</span>)<br></code></pre></td></tr></table></figure>
 
